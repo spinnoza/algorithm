@@ -1,22 +1,14 @@
 ﻿using System;
 using System.Text;
-using System.Text.RegularExpressions;
 
 namespace ConsoleApp1
 {
     class Program
     {
 
-        public static string ExtractNumber(string input)
-        {
-            string pattern = @"(?<=\D|^)\d{6}(?=\D|$)|(?<=\D|^)\d{7}(?=\D|$)";
-            Match match = Regex.Match(input, pattern);
-            return match.Success ? match.Value : null;
-        }
+      
         static void Main(string[] args)
         {
-
-            //Console.WriteLine(ExtractNumber("抚州市第一医院;#;#"));
 
             for (int i = 0; i < 10; i++)
             {
@@ -27,6 +19,11 @@ namespace ConsoleApp1
             Console.ReadKey();
         }
 
+        /// <summary>
+        /// 打印数组
+        /// </summary>
+        /// <param name="arr"></param>
+        /// <returns></returns>
         public static string ArrayToString(int[] arr)
         {
             var sb = new StringBuilder();
@@ -42,6 +39,12 @@ namespace ConsoleApp1
             return sb.ToString();
         }
 
+        /// <summary>
+        /// 生成随机整数数组
+        /// </summary>
+        /// <param name="maxSize"></param>
+        /// <param name="maxValue"></param>
+        /// <returns></returns>
         public static int[] GenerateRandomArray(int maxSize, int maxValue)
         {
             var random = new Random();
