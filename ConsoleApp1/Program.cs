@@ -39,7 +39,7 @@ namespace ConsoleApp1
             {
                 int[] arr1 = GenerateRandomArray(maxSize, maxValue);
                 int[] arr2 = CopyArray(arr1);
-                MergeSort1(arr1);
+                MergeSort2(arr1);
                 Array.Sort(arr2);
                 if (!IsEqual(arr1, arr2))
                 {
@@ -49,12 +49,19 @@ namespace ConsoleApp1
                     break;
                 }
             }
+            
+
+            // var arr = new int[]{ -49, 32, -10, 38 };
+            // MergeSort2(arr);
             Console.WriteLine(succeed ? "Nice!" : "Oops!");
 
 
             Console.ReadKey();
         }
-
+        /// <summary>
+        /// 归并排序(递归)
+        /// </summary>
+        /// <param name="arr"></param>
         public static void MergeSort1(int[] arr)
         {
             if (arr == null || arr.Length < 2)
@@ -62,6 +69,53 @@ namespace ConsoleApp1
                 return;
             }
             Process(arr, 0, arr.Length - 1);
+        }
+
+        /// <summary>
+        /// 归并排序(遍历)
+        /// </summary>
+        /// <param name="arr"></param>
+        public static void MergeSort2(int[] arr)
+        {
+            if (arr == null || arr.Length < 2)
+            {
+                return;
+            }
+
+            var mergeSize = 1;
+            var N = arr.Length;
+
+            while (mergeSize<=N)
+            {
+                //左组
+                var L = 0;
+
+                while (L<N)
+                {
+                    var M = L + mergeSize - 1;
+
+                    if (M >= N)
+                    {
+                        break;
+                    }
+
+                    //右组
+                    //var rightBegin = M + 1;
+                    var R = Math.Min(M + mergeSize, N - 1);
+
+                    Merge(arr, L, M, R);
+
+                    L = R+1;
+
+                }
+
+                if (mergeSize> N/2)
+                {
+                    break;
+                }
+
+                mergeSize <<= 1;
+            }
         }
 
         public static void Process(int[] arr, int L, int R)
