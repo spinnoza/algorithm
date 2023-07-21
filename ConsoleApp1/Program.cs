@@ -39,7 +39,7 @@ namespace ConsoleApp1
             {
                 int[] arr1 = GenerateRandomArray(maxSize, maxValue);
                 int[] arr2 = CopyArray(arr1);
-                MergeSort2(arr1);
+                SelectionSort(arr1);
                 Array.Sort(arr2);
                 if (!IsEqual(arr1, arr2))
                 {
@@ -58,6 +58,89 @@ namespace ConsoleApp1
 
             Console.ReadKey();
         }
+
+
+        /// <summary>
+        /// 数组两个元素交换
+        /// </summary>
+        /// <param name="arr"></param>
+        /// <param name="i"></param>
+        /// <param name="j"></param>
+        public static void Swap(int[] arr, int i, int j)
+        {
+            int tmp = arr[i];
+            arr[i] = arr[j];
+            arr[j] = tmp;
+        }
+
+        /// <summary>
+        /// 荷兰国旗问题
+        /// </summary>
+        /// <param name="arr"></param>
+        /// <param name="L"></param>
+        /// <param name="R"></param>
+        /// <returns>等于arr[R]的第一个索引和等于arr[R]的最后一个索引</returns>
+        public static int[] NetherlandsFlag(int[] arr, int L, int R)
+        {
+            if (L > R)
+            {
+                return new int[] { -1, -1 };
+            }
+            if (L == R)
+            {
+                return new int[] { L, R };
+            }
+            int less = L - 1; // < 区 右边界
+            int more = R;     // > 区 左边界
+            int index = L;
+            while (index < more)
+            {
+                if (arr[index] == arr[R])
+                {
+                    index++;
+                }
+                else if (arr[index] < arr[R])
+                {
+                    Swap(arr, index++, ++less);
+                }
+                else
+                { // >
+                    Swap(arr, index, --more);
+                }
+            }
+            Swap(arr, more, R);
+            return new int[] { less + 1, more };
+        }
+
+        /// <summary>
+        /// 快排
+        /// </summary>
+        /// <param name="arr"></param>
+        public static void QuickSort3(int[] arr)
+        {
+            if (arr == null || arr.Length < 2)
+            {
+                return;
+            }
+            Process3(arr, 0, arr.Length- 1);
+        }
+
+
+        public static void Process3(int[] arr, int L, int R)
+        {
+            if (L >= R)
+            {
+                return;
+            }
+            //随机从数组中取一个值与最后一个值做交换
+           // Swap(arr, L + (int)(new Random().NextDouble() * (R - L + 1)), R);
+
+
+            int[] equalArea = NetherlandsFlag(arr, L, R);
+            Process3(arr, L, equalArea[0] - 1);
+            Process3(arr, equalArea[1] + 1, R);
+        }
+
         /// <summary>
         /// 归并排序(递归)
         /// </summary>
@@ -301,6 +384,31 @@ namespace ConsoleApp1
 
             return pre;
             
+        }
+
+        /// <summary>
+        /// 选择排序
+        /// </summary>
+        /// <param name="arr"></param>
+        public static void SelectionSort(int[] arr)
+        {
+            if (arr == null || arr.Length < 2)
+            {
+                return;
+            }
+            // 0 ~ N-1
+            // 1~n-1
+            // 2
+            for (int i = 0; i < arr.Length - 1; i++)
+            { // i ~ N-1
+                // 最小值在哪个位置上  i～n-1
+                int minIndex = i;
+                for (int j = i + 1; j < arr.Length; j++)
+                { // i ~ N-1 上找最小值的下标 
+                    minIndex = arr[j] < arr[minIndex] ? j : minIndex;
+                }
+                Swap(arr, i, minIndex);
+            }
         }
     }
 }

@@ -1,0 +1,56 @@
+# 编译生成的文件
+bin/
+obj/
+
+# NuGet Packages 目录
+*.nuget/
+
+# Visual Studio 生成文件
+*.user
+*.aps
+*.pch
+*.vspscc
+*_i.c
+*_p.c
+*.ncb
+*.suo
+*.tlb
+*.tlh
+*.bak
+*.cache
+*.ilk
+*.log
+*.lib
+*.sbr
+*.sdf
+*.opensdf
+*.unsuccessfulbuild
+ipch/
+[Tt]est[Rr]esult*
+[Bb]uild[Ll]og.*
+x64/
+x86/
+bld/
+[Bb]in/
+[Oo]bj/
+[Dd]ebug/
+[Rr]elease/
+Ankh.NoLoad
+
+# MSTest 测试输出目录
+TestResults/
+
+# Resharper 调试日志文件
+_ReSharper*/
+
+# NCrunch
+_NCrunch_*
+.*crunch*.local.xml
+
+# Windows 特定的文件
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# macOS/OS X 特定的文件
+.DS_Store
