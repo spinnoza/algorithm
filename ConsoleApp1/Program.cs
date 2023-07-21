@@ -39,7 +39,7 @@ namespace ConsoleApp1
             {
                 int[] arr1 = GenerateRandomArray(maxSize, maxValue);
                 int[] arr2 = CopyArray(arr1);
-                SelectionSort(arr1);
+                InsertionSort(arr1);
                 Array.Sort(arr2);
                 if (!IsEqual(arr1, arr2))
                 {
@@ -408,6 +408,27 @@ namespace ConsoleApp1
                     minIndex = arr[j] < arr[minIndex] ? j : minIndex;
                 }
                 Swap(arr, i, minIndex);
+            }
+        }
+
+        /// <summary>
+        /// 插入排序
+        /// </summary>
+        /// <param name="arr"></param>
+        public static void InsertionSort(int[] arr)
+        {
+            if (arr == null || arr.Length < 2)
+            {
+                return;
+            }
+            // 0~0 有序的
+            // 0~i 想有序
+            for (int i = 1; i < arr.Length; i++)
+            { // 0 ~ i 做到有序
+                for (int j = i - 1; j >= 0 && arr[j] > arr[j + 1]; j--)
+                {
+                    Swap(arr, j, j + 1);
+                }
             }
         }
     }
