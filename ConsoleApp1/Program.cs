@@ -74,7 +74,7 @@ namespace ConsoleApp1
         }
 
         /// <summary>
-        /// 荷兰国旗问题
+        /// 荷兰国旗问题,以arr[R]做区分值
         /// </summary>
         /// <param name="arr"></param>
         /// <param name="L"></param>

@@ -6,6 +6,7 @@ obj/
 *.nuget/
 
 # Visual Studio 生成文件
+.vs/
 *.user
 *.aps
 *.pch
