@@ -39,7 +39,7 @@ namespace ConsoleApp1
             {
                 int[] arr1 = GenerateRandomArray(maxSize, maxValue);
                 int[] arr2 = CopyArray(arr1);
-                InsertionSort(arr1);
+                HeapSort(arr1);
                 Array.Sort(arr2);
                 if (!IsEqual(arr1, arr2))
                 {
@@ -49,14 +49,66 @@ namespace ConsoleApp1
                     break;
                 }
             }
-            
 
-            // var arr = new int[]{ -49, 32, -10, 38 };
-            // MergeSort2(arr);
+
             Console.WriteLine(succeed ? "Nice!" : "Oops!");
 
 
+            // var heapTest = new Heap01();
+            // heapTest.TestFunc();
+
+
             Console.ReadKey();
+        }
+
+        // 堆排序 额外空间复杂度O(1)
+        public static void HeapSort(int[] arr)
+        {
+            if (arr == null || arr.Length < 2)
+            {
+                return;
+            }
+            // O(N*logN)
+            //		for (int i = 0; i < arr.length; i++) { // O(N)
+            //			heapInsert(arr, i); // O(logN)
+            //		}
+
+            //优化方法,在构建大根堆时 时间复杂度变为O(N)
+            for (int i = arr.Length - 1; i >= 0; i--)
+            {
+                Heapify(arr, i, arr.Length);
+            }
+            int heapSize = arr.Length;
+            Swap(arr, 0, --heapSize);
+            // O(N*logN)
+            while (heapSize > 0)
+            { // O(N)
+                Heapify(arr, 0, heapSize); // O(logN)
+                Swap(arr, 0, --heapSize); // O(1)
+            }
+        }
+
+        // arr[index]位置的数，能否往下移动
+        public static void Heapify(int[] arr, int index, int heapSize)
+        {
+            int left = index * 2 + 1; // 左孩子的下标
+            while (left < heapSize)
+            { // 下方还有孩子的时候
+                // 两个孩子中，谁的值大，把下标给largest
+                // 1）只有左孩子，left -> largest
+                // 2) 同时有左孩子和右孩子，右孩子的值<= 左孩子的值，left -> largest
+                // 3) 同时有左孩子和右孩子并且右孩子的值> 左孩子的值， right -> largest
+                int largest = left + 1 < heapSize && arr[left + 1] > arr[left] ? left + 1 : left;
+                // 父和较大的孩子之间，谁的值大，把下标给largest
+                largest = arr[largest] > arr[index] ? largest : index;
+                if (largest == index)
+                {
+                    break;
+                }
+                Swap(arr, largest, index);
+                index = largest;
+                left = index * 2 + 1;
+            }
         }
 
 
