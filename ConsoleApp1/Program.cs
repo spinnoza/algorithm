@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using static ConsoleApp1.Heap02;
 
 namespace ConsoleApp1
 {
@@ -31,31 +32,30 @@ namespace ConsoleApp1
             // PrintLinkList(rNode);
 
 
-            int testTime = 500000;
-            int maxSize = 100;
-            int maxValue = 100;
-            bool succeed = true;
-            for (int i = 0; i < testTime; i++)
-            {
-                int[] arr1 = GenerateRandomArray(maxSize, maxValue);
-                int[] arr2 = CopyArray(arr1);
-                HeapSort(arr1);
-                Array.Sort(arr2);
-                if (!IsEqual(arr1, arr2))
-                {
-                    succeed = false;
-                    ArrayToString(arr1);
-                    ArrayToString(arr2);
-                    break;
-                }
-            }
+            // int testTime = 500000;
+            // int maxSize = 100;
+            // int maxValue = 100;
+            // bool succeed = true;
+            // for (int i = 0; i < testTime; i++)
+            // {
+            //     int[] arr1 = GenerateRandomArray(maxSize, maxValue);
+            //     int[] arr2 = CopyArray(arr1);
+            //     HeapSort(arr1);
+            //     Array.Sort(arr2);
+            //     if (!IsEqual(arr1, arr2))
+            //     {
+            //         succeed = false;
+            //         ArrayToString(arr1);
+            //         ArrayToString(arr2);
+            //         break;
+            //     }
+            // }
+            //
+            //
+            // Console.WriteLine(succeed ? "Nice!" : "Oops!");
 
 
-            Console.WriteLine(succeed ? "Nice!" : "Oops!");
-
-
-            // var heapTest = new Heap01();
-            // heapTest.TestFunc();
+            TestHeap02();
 
 
             Console.ReadKey();
@@ -483,5 +483,63 @@ namespace ConsoleApp1
                 }
             }
         }
+
+        public  class StudentComparator : Comparer<Student> 
+        {
+            public override int Compare(Student x, Student y)
+            {
+
+                if (x == null || y == null)
+                {
+                    return 0;
+                }
+                return x.Age - y.Age;
+            }
+        }
+
+    public static void TestHeap02()
+        {
+            Student s1 = null;
+            Student s2 = null;
+            Student s3 = null;
+            Student s4 = null;
+            Student s5 = null;
+            Student s6 = null;
+
+            s1 = new Student(2, 50, 11111);
+            s2 = new Student(1, 60, 22222);
+            s3 = new Student(6, 10, 33333);
+            s4 = new Student(3, 20, 44444);
+            s5 = new Student(7, 72, 55555);
+            s6 = new Student(1, 14, 66666);
+
+            MyHeap<Student> myHeap = new MyHeap<Student>(new StudentComparator());
+            myHeap.Push(s1);
+            myHeap.Push(s2);
+            myHeap.Push(s3);
+            myHeap.Push(s4);
+            myHeap.Push(s5);
+            myHeap.Push(s6);
+
+            s2.Age = 6;
+            myHeap.Resign(s2);
+            s4.Age = 12;
+            myHeap.Resign(s4);
+            s5.Age = 10;
+            myHeap.Resign(s5);
+            s6.Age = 84;
+            myHeap.Resign(s6);
+
+            while (!myHeap.IsEmpty())
+            {
+                Student cur = myHeap.Pop();
+                Console.WriteLine(cur.ClassNo + "," + cur.Age + "," + cur.Id);
+            }
+
+            Console.WriteLine("===============");
+
+
+        }
+
     }
 }
