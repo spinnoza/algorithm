@@ -9,7 +9,10 @@ namespace ConsoleApp1
 {
     public class Heap02
     {
-        // 堆
+        /// <summary>
+        /// 泛型堆结构,push,pop实时更新为小根堆,并且支持自定义比较器
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
         public class MyHeap<T>
         {
             private List<T> _heap;
