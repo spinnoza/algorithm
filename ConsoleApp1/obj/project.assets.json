@@ -8,19 +8,19 @@
     "net5.0": []
   },
   "packageFolders": {
-    "C:\\Users\\Leo\\.nuget\\packages\\": {}
+    "C:\\Users\\wangjil\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\算法\\algorithm\\ConsoleApp1\\ConsoleApp1.csproj",
+      "projectUniqueName": "C:\\wang\\PersonalProject\\suanfa\\algorithm\\ConsoleApp1\\ConsoleApp1.csproj",
       "projectName": "ConsoleApp1",
-      "projectPath": "D:\\算法\\algorithm\\ConsoleApp1\\ConsoleApp1.csproj",
-      "packagesPath": "C:\\Users\\Leo\\.nuget\\packages\\",
-      "outputPath": "D:\\算法\\algorithm\\ConsoleApp1\\obj\\",
+      "projectPath": "C:\\wang\\PersonalProject\\suanfa\\algorithm\\ConsoleApp1\\ConsoleApp1.csproj",
+      "packagesPath": "C:\\Users\\wangjil\\.nuget\\packages\\",
+      "outputPath": "C:\\wang\\PersonalProject\\suanfa\\algorithm\\ConsoleApp1\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Leo\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\wangjil\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -61,7 +61,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.402\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.102\\RuntimeIdentifierGraph.json"
       }
     }
   }
